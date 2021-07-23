@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <OutDir>..\Assets\Plugins\NuGet</OutDir>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <Target Name="CopyLocalNuGetPackageXml" Condition="$(CopyLocalLockFileAssemblies) == true" AfterTargets="ResolveReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths->'%(RootDir)%(Directory)%(Filename).xml')" Condition="'%(ReferenceCopyLocalPaths.NuGetPackageId)' != '' and Exists('%(RootDir)%(Directory)%(Filename).xml')" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="RemoveAssemblyAfterBuild" AfterTargets="AfterBuild">
+    <Delete Files="$(OutDir)\$(AssemblyName).dll" />
+  </Target>
+</Project>
