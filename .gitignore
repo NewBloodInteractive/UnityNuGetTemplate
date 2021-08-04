@@ -15,6 +15,9 @@
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
 
+# NuGet output directory
+/[Aa]ssets/[Pp]lugins/[Nn]u[Gg]et/**/*
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
@@ -70,9 +73,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-# NuGet output directory
-/[Aa]ssets/[Pp]lugins/[Nn]u[Gg]et/
 
 # Don't ignore the NuGet packages project
 !/[Nn]u[Gg]et/Packages.csproj
